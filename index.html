@@ -1,37 +1,59 @@
 <!DOCTYPE html>
 
-<style>
-    html, body {
-        margin: 0;
-        padding: 0;
-    }
-    
-    .full-screen-image {
-        width: 100vw;
-        height: auto;
-    }
-</style>
+
 
 <html>
 <head>
-    <style>
-        body {
-            margin: 2%;
-            background-color: #F7CAC9; 
-            background-image: url("caminho/para/imagem.jpg"); /* Caminho para a imagem de fundo desejada */
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-    </style>
+ <style>
+$bg: #F7CAC9;
+$text: #000;
+
+body {
+  margin: 0;
+  height: calc(100vh - 20px);
+  font-size: 80px;
+  text-align: center;
+  background: $bg;
+  color: $text;
+  font-family: 'Pacifico', sans-serif;
+  text-shadow: 0 2px 2px rgba(0,0,0,0.3);
+  -webkit-font-smoothing: antialiased;
+  border: solid 10px #fff;
+}
+
+
+.flash-animation {
+  animation: flash 1s infinite;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+</style>
 </head>
 <body>
     
-<h1 id="solidarismo">Solidarismo</h1>
+<h1 class="flash-animation"id="solidarismo">Solidarismo</h1>
 <p>Discord <a href="https://discord.gg/j5ADJNUXyd"> https://discord.gg/j5ADJNUXyd</a></p>
 
 <p>O Solidarismo é uma nova ideologia de transição que busca uma sociedade mais justa, igualitária e solidária, somos contra a estrutura vigente que explora e aliena o nosso povo. Almejamos mudanças reais na sociedade através da comunicação, mudança cultural, articulação política, modelo econômico de cooperativas, comunidades intencionais. O objetivo final (completando a transição) é superar o capitalismo. Não somos 'adversários' de outras ideologias, somos aliados de todo e qualquer movimento que busque o fim da  miséria e o progresso da humanidade.</p>
 
-<h1 id="-ndice">Índice</h1>
+<h1 class="flash-animation"id="indice">Índice</h1>
   <li><a href="#contato">Contato</a></li>
   <li><a href="#valores">Valores</a></li>
   <li><a href="#importante">Importante - Tenha em mente que</a></li>
