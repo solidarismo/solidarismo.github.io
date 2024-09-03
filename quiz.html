@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Interativo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .feedback {
+            color: red;
+            font-weight: bold;
+            display: none;
+        }
+        .correct {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Interativo</h1>
+
+    <!-- Pergunta 1 -->
+    <div class="question" id="question1">
+        <p>O que você acha dos direitos humanos?</p>
+        <input type="radio" name="q1" value="Bom"> Bom, pois luta pelos direitos fundamentais mínimos previstos em lei.<br>
+        <input type="radio" name="q1" value="Ruim"> Ruim, pois na prática serve apenas para defender bandido.<br>
+        <input type="radio" name="q1" value="Neutro"> Neutro, não acho que os direitos humanos sejam algo relevante.<br>
+        <p class="feedback" id="feedback1"></p>
+    </div>
+
+    <!-- Pergunta 2 -->
+    <div class="question" id="question2">
+        <p>Você é a favor que sua religião tenha privilégios pelo governo em detrimento de outras religiões?</p>
+        <input type="radio" name="q2" value="Sim"> Sim, pois isso seria melhor para o povo.<br>
+        <input type="radio" name="q2" value="Não"> Não, todas as religiões devem ter mesmo tratamento perante a lei.<br>
+        <input type="radio" name="q2" value="Religião oficial"> Não deve ter tratamento especial, mas a religião oficial do país deveria ser ensinada nas escolas.<br>
+        <p class="feedback" id="feedback2"></p>
+    </div>
+
+    <!-- Pergunta 3 -->
+    <div class="question" id="question3">
+        <p>O Estado deve fornecer acesso universal à saúde, segurança, educação e oportunidades de trabalho?</p>
+        <input type="radio" name="q3" value="Sim"> Sim, o Estado deve garantir esses serviços essenciais a todos, seja através de gratuidade ou de programas como vouchers, para assegurar que todos os cidadãos tenham acesso.<br>
+        <input type="radio" name="q3" value="Não"> Não, o livre mercado deve ser responsável por oferecer esses serviços. O papel do Estado deve ser mínimo, evitando interferências que possam atrapalhar a iniciativa privada e o desenvolvimento econômico.<br>
+        <p class="feedback" id="feedback3"></p>
+    </div>
+
+    <!-- Pergunta 4 -->
+    <div class="question" id="question4">
+        <p>O Estado deve garantir direitos iguais para a comunidade LGBT, incluindo o casamento igualitário e a adoção?</p>
+        <input type="radio" name="q4" value="Não"> Não, o casamento e a adoção devem ser restritos a casais heterossexuais.<br>
+        <input type="radio" name="q4" value="Sim"> Sim, todos devem ter os mesmos direitos, independentemente da orientação sexual ou identidade de gênero.<br>
+        <p class="feedback" id="feedback4"></p>
+    </div>
+
+    <!-- Pergunta 5 -->
+    <div class="question" id="question5">
+        <p>Escolas devem incluir educação sobre diversidade de gênero e orientação sexual em seu currículo?</p>
+        <input type="radio" name="q5" value="Não"> Não, esses assuntos devem ser ensinados em casa, e não fazem parte do currículo escolar.<br>
+        <input type="radio" name="q5" value="Sim"> Sim, é importante educar os jovens sobre diversidade para promover respeito e compreensão.<br>
+        <p class="feedback" id="feedback5"></p>
+    </div>
+
+    <!-- Pergunta 6 -->
+    <div class="question" id="question6">
+        <p>Se você sabe ou soubesse andar de moto, você faria grau (empinar a moto na rua)?</p>
+        <input type="radio" name="q6" value="Não"> Não, fazer isso na rua é perigoso e é uma infração de trânsito.<br>
+        <input type="radio" name="q6" value="Sim"> Sim, acho bacana.<br>
+        <p class="feedback" id="feedback6"></p>
+    </div>
+
+    <!-- Pergunta 7 -->
+    <div class="question" id="question7">
+        <p>O que você acha sobre acumulação de riqueza?</p>
+        <input type="radio" name="q7" value="Direito de trabalhar"> Cada um tem o direito de trabalhar e conseguir quanta riqueza quiser, isso não é um crime e é eticamente ok.<br>
+        <input type="radio" name="q7" value="Justa distribuição"> Cada pessoa deve ganhar pelo que contribui pela sociedade, ou seja, alguns vão ter mais que outros porém ninguém deveria ser 100x mais rico que a pessoa mais pobre.<br>
+        <input type="radio" name="q7" value="Igualdade"> O ideal é que a sociedade seja próxima da igualdade, ou seja, todos terem praticamente a mesma riqueza.<br>
+        <p class="feedback" id="feedback7"></p>
+    </div>
+
+    <!-- Pergunta 8 -->
+    <div class="question" id="question8">
+        <p>Como podemos melhorar a nação?</p>
+        <input type="radio" name="q8" value="Mudanças graduais"> Mudanças graduais através de mudanças no sistema, convencimento e organização das pessoas. Sistema cooperativo onde não existe o burguês. Promoção de uma filosofia contra o hiperconsumo e em favor da cooperação e da humildade.<br>
+        <input type="radio" name="q8" value="Revolução"> Uma revolução e tomada do poder para poder impor uma ideologia revolucionária.<br>
+        <p class="feedback" id="feedback8"></p>
+    </div>
+
+    <!-- Pergunta 9 -->
+    <div class="question" id="question9">
+        <p>O que você acha da ostentação?</p>
+        <input type="radio" name="q9" value="Normal"> Querer se aparecer mostrando riqueza é algo normal do nosso mundo.<br>
+        <input type="radio" name="q9" value="Idiota"> Isso é coisa de gente idiota que teve o cérebro derretido pelo capitalismo, a felicidade verdadeira está em outras coisas como amizade, tranquilidade, paz.<br>
+        <p class="feedback" id="feedback9"></p>
+    </div>
+
+    <button onclick="calculateResult()">Ver Resultado</button>
+    <p class="result" id="result"></p>
+
+    <script>
+        function calculateResult() {
+            let score = 0;
+
+            // Avaliação de cada pergunta
+            const answers = [
+                {question: 'q1', correctAnswer: 'Bom'},
+                {question: 'q2', correctAnswer: 'Não'},
+                {question: 'q3', correctAnswer: 'Sim'},
+                {question: 'q4', correctAnswer: 'Sim'},
+                {question: 'q5', correctAnswer: 'Sim'},
+                {question: 'q6', correctAnswer: 'Não'},
+                {question: 'q7', correctAnswer: 'Justa distribuição'},
+                {question: 'q8', correctAnswer: 'Mudanças graduais'},
+                {question: 'q9', correctAnswer: 'Idiota'}
+            ];
+
+            answers.forEach((item, index) => {
+                const question = document.querySelector(`input[name="${item.question}"]:checked`);
+                const feedback = document.getElementById(`feedback${index + 1}`);
+                if (question) {
+                    if (question.value === item.correctAnswer) {
+                        score++;
+                        feedback.innerText = "Correto!";
+                        feedback.classList.add("correct");
+                    } else {
+                        feedback.innerText = `Errado! A resposta correta é: ${item.correctAnswer}.`;
+                    }
+                    feedback.style.display = "block";
+                }
+            });
+
+            // Cálculo do resultado
+            const totalQuestions = answers.length;
+            const percentage = (score / totalQuestions) * 100;
+            let resultText;
+
+            if (percentage >= 80) {
+                resultText = "Você tem uma cosmovisão coerente com o Solidarismo";
+            } else if (percentage >= 50) {
+                resultText = "Você tem uma cosmovisão divergente dos valores do Solidarismos";
+            } else {
+                resultText = "Quando passar por mim na rua finja que não me viu.";
+            }
+
+            document.getElementById("result").innerText = `Você acertou ${percentage.toFixed(2)}% das questões. Resultado: ${resultText}`;
+        }
+    </script>
+</body>
+</html>
