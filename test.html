@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árvore Conceitual: Auguste Comte (Aron)</title>
+    <!-- Carregamento do Tailwind CSS para estilo e responsividade -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Tone.js para geração de áudio clássico -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+        }
+        .concept-node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .concept-node:hover {
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.5); /* Sombra azul-índigo */
+        }
+        .concept-node.active {
+            border-color: #4f46e5; /* Cor principal (Indigo 600) */
+            background-color: #eef2ff; /* Fundo levemente azulado */
+            font-weight: 600;
+            color: #1e3a8a !important; /* Texto azul escuro para contraste no ativo */
+        }
+        .trunk {
+            background-color: #4c1d95; /* Roxo escuro */
+            color: white;
+            border-bottom: 4px solid #fcd34d; /* Amarelo de destaque */
+        }
+        .branch-thick {
+            background-color: #8b5cf6; /* Roxo médio */
+            color: white;
+        }
+        .branch-thin {
+            background-color: #a78bfa; /* Roxo claro */
+            color: white;
+        }
+        /* Responsividade para o layout principal */
+        @media (min-width: 1024px) {
+            #main-container {
+                display: grid;
+                grid-template-columns: 1fr 2fr; /* 1/3 para mapa, 2/3 para conteúdo */
+                gap: 2rem;
+            }
+        }
+        /* Estilo específico para o novo bloco de Citação */
+        .citation-block {
+            background-color: #ecfdf5; /* Fundo verde super claro */
+            border-left: 4px solid #34d399; /* Borda verde forte */
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div id="app" class="max-w-6xl mx-auto">
+
+        <!-- Header e Título -->
+        <header class="text-center mb-8 relative">
+            <h1 class="text-4xl font-extrabold text-indigo-800">Mapa Conceitual de Comte (Segundo Aron)</h1>
+            <p class="text-gray-600 mt-2">Explore os conceitos de forma não-linear, exercendo agência total sobre sua trilha de estudos.</p>
+        
+            <!-- Botão de Controle de Música -->
+            <button id="music-btn" class="absolute top-0 right-0 p-2 bg-indigo-500 text-white rounded-full shadow-lg hover:bg-indigo-600 transition duration-300 flex items-center justify-center w-10 h-10" aria-label="Controlar Música">
+                <span id="music-icon">🔇</span>
+            </button>
+        </header>
+
+        <!-- Container Principal: Mapa Conceitual (Tronco e Galhos) -->
+        <div id="main-container" class="lg:grid lg:gap-8">
+            
+            <!-- Coluna 1: Mapa Conceitual (Árvore) -->
+            <div id="concept-tree" class="bg-white p-4 sm:p-6 rounded-xl shadow-xl border border-indigo-100 mb-8 lg:mb-0">
+                <h3 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Estrutura (Tronco & Galhos)</h3>
+                <!-- O mapa será renderizado aqui -->
+            </div>
+
+            <!-- Coluna 2: Conteúdo Denso e Citações -->
+            <div id="content-display" class="content-card bg-white p-6 sm:p-10 rounded-xl shadow-2xl border border-indigo-200">
+                <div id="content-header">
+                    <h2 id="content-title" class="text-3xl font-extrabold text-gray-700 border-b pb-2 mb-4">Selecione um Galho para Começar</h2>
+                    <p id="content-key" class="text-sm text-indigo-500 mb-6">Escolha qualquer nó no Mapa Conceitual à esquerda (ou acima) para carregar o conteúdo denso de estudo.</p>
+                </div>
+                
+                <div id="content-body" class="text-base leading-relaxed text-gray-700 min-h-[300px]">
+                    <p>Aqui aparecerá o resumo aprofundado e as citações-chave de Raymond Aron sobre o tópico selecionado. O aprendizado é autônomo e não-linear (Andragogia).</p>
+                    <p class="mt-4 p-3 bg-yellow-50 rounded-lg text-yellow-800 border-l-4 border-yellow-500">Selecione o "Tronco" para ver a introdução e as raízes do pensamento de Comte, segundo Aron.</p>
+                </div>
+
+                <!-- NOVO BLOCO: Citações e Fonte Rastreável (NotebookLM Style) -->
+                <div id="citation-block" class="mt-10 pt-6 citation-block rounded-lg p-5 shadow-lg border border-green-200">
+                    <h4 class="text-lg font-bold text-green-700 mb-3 flex items-center">
+                        📌 Citação Rastreável (Fonte)
+                    </h4>
+                    <div id="citation-content" class="text-sm text-gray-700 space-y-3">
+                        <!-- Conteúdo da citação será injetado aqui -->
+                    </div>
+                </div>
+                <!-- FIM NOVO BLOCO -->
+            </div>
+            
+        </div>
+
+    </div>
+
+    <script>
+        // Variáveis de Estado
+        let activeNodeId = null;
+        let musicPlaying = false;
+        let ambientLoop; 
+
+        // Estrutura Hierárquica (Tronco, Galhos Grossos, Galhos Finos)
+        const conceptTree = [
+            {
+                id: 'T1',
+                type: 'trunk',
+                title: "O TRONCO: O FUNDAMENTO SOCIOLÓGICO",
+                key: "Introdução: Unidade vs. Diversidade",
+                content: `
+                    <h4 class="text-2xl font-semibold text-gray-800 mt-6 mb-4 border-b pb-2">Comte (Unidade) vs. Montesquieu (Diversidade)</h4>
+                    <p class="text-gray-700 mb-4">Aron estabelece a diferença crucial: <strong>Montesquieu</strong> é o sociólogo da <strong>diversidade</strong>, buscando a ordem no caos aparente dos determinantes sociais. <strong>Comte</strong>, ao contrário, é o sociólogo da <strong>unidade</strong>, levando sua concepção a tal ponto que tem dificuldade em fundamentar a diversidade, pois toda a humanidade deve convergir para o mesmo tipo de sociedade (Positiva).</p>
+                    
+                    <div class="p-4 bg-red-100 border-l-4 border-red-500 text-red-800 rounded-lg mt-6 mb-4 shadow-sm">
+                        <p class="font-bold">Ponto Crítico (Aron):</p>
+                        <p class="text-sm italic mt-1">O foco inicial de Comte na unidade e na lei única da história (o determinismo) é, ironicamente, a principal limitação de sua sociologia, forçando a realidade a caber em um molde rígido.</p>
+                    </div>
+                `,
+                // Citação baseada na página 9 do livro de Aron
+                citation: {
+                    source: "ARON, As Etapas do Pensamento Sociológico, p. 9",
+                    excerpt: "Montesquieu é, antes de tudo, o sociólogo consciente da diversidade... Auguste Comte, ao contrário, é antes de mais nada o sociólogo da unidade humana e social, da unidade da história humana."
+                },
+                children: ['G1', 'G2', 'G3', 'S1']
+            },
+            {
+                id: 'G1',
+                type: 'branch-thick',
+                title: "1ª ETAPA: POSITIVISMO CIENTÍFICO PURO",
+                key: "O Plano Puramente Intelectual (1822-1826)",
+                content: `
+                    <h4 class="text-2xl font-semibold text-gray-800 mt-6 mb-4 border-b pb-2">A Organização pela Ciência</h4>
+                    <p class="text-gray-700 mb-4">Nesta fase, Comte acredita que a reorganização da sociedade moderna deve ser baseada <strong>exclusivamente na ciência positiva</strong>, que se torna o único conhecimento válido. O sistema é puramente científico e rejeita a teologia e a metafísica por gerarem o caos pós-Revolução Francesa.</p>
+                    <p class="text-gray-700 italic mt-4">Essa é a fase da fundação lógica da Sociologia.</p>
+                `,
+                children: ['F1-1', 'F1-2']
+            },
+            {
+                id: 'F1-1', 
+                type: 'branch-thin', 
+                key: "Lei dos Três Estados", 
+                content: `
+                    <div class="p-5 bg-blue-50 border-l-4 border-blue-400 rounded-lg shadow-md mb-4">
+                        <p class="text-lg font-bold text-blue-800 mb-2">Detalhe da Lei:</p>
+                        <p class="text-gray-700">A sucessão necessária das formas de conhecimento (Teológico, Metafísico, Positivo). É a chave da Dinâmica Social (progresso).</p>
+                        <p class="mt-2 text-sm italic text-gray-600">No Estado Positivo, o espírito renuncia a buscar a origem e o destino dos fenômenos, limitando-se a descobrir as leis de sucessão e semelhança.</p>
+                    </div>
+                `, 
+                children: []
+            },
+            {
+                id: 'F1-2', 
+                type: 'branch-thin', 
+                key: "Hierarquia das Ciências", 
+                content: `
+                    <div class="p-5 bg-blue-50 border-l-4 border-blue-400 rounded-lg shadow-md mb-4">
+                        <p class="text-lg font-bold text-blue-800 mb-2">Ordem Científica:</p>
+                        <p class="text-gray-700">Ordem crescente de complexidade e decrescente de generalidade (Matemática → Biologia → Sociologia).</p>
+                        <p class="mt-2 text-sm italic text-gray-600">A Sociologia é a 'rainha' das ciências, a última a entrar no estado positivo, por ser a mais complexa.</p>
+                    </div>
+                `, 
+                children: []
+            },
+            {
+                id: 'G2',
+                type: 'branch-thick',
+                title: "2ª ETAPA: SISTEMATIZAÇÃO SOCIOLÓGICA",
+                key: "A Divisão de Estática e Dinâmica Social (1826-1845)",
+                content: `
+                    <h4 class="text-2xl font-semibold text-gray-800 mt-6 mb-4 border-b pb-2">A Separação entre Ordem e Progresso</h4>
+                    <p class="text-gray-700 mb-6">Comte formaliza a Sociologia em dois ramos que correspondem às duas grandes questões do social:</p>
+                    <ul class="list-disc list-inside space-y-3 ml-4 text-gray-700 p-4 bg-gray-100 rounded-xl border border-gray-200 shadow-inner">
+                        <li class="font-bold text-indigo-700">Estática Social: <span class="font-normal text-gray-800">O estudo da <strong>Ordem</strong> e das condições de existência das sociedades. Foca nas leis da coexistência e na estrutura social.</span></li>
+                        <li class="font-bold text-indigo-700">Dinâmica Social: <span class="font-normal text-gray-800">O estudo do <strong>Progresso</strong> e do movimento contínuo da humanidade (a Lei dos Três Estados em ação). Foca nas leis de sucessão.</span></li>
+                    </ul>
+                `,
+                children: ['F2-1', 'F2-2', 'F2-3']
+            },
+            {
+                id: 'F2-1', 
+                type: 'branch-thin', 
+                key: "Crítica à Metafísica ('Nefasta')", 
+                content: `
+                    <div class="p-5 bg-yellow-50 border-l-4 border-yellow-400 rounded-lg shadow-md mb-4">
+                        <p class="text-lg font-bold text-yellow-800 mb-2">Fase de Transição (Caos):</p>
+                        <p class="text-gray-700">Comte critica a fase Metafísica por ser apenas destrutiva. Ela destrói o Teológico em nome de abstrações, mas não possui força construtiva, mantendo a anarquia social.</p>
+                    </div>
+                `, 
+                children: []
+            },
+            {
+                id: 'F2-2', 
+                type: 'branch-thin', 
+                key: "Estática (A Ordem)", 
+                content: `
+                    <div class="p-5 bg-green-50 border-l-4 border-green-400 rounded-lg shadow-md mb-4">
+                        <p class="text-lg font-bold text-green-800 mb-2">Foco da Estática:</p>
+                        <p class="text-gray-700">Foco nas instituições que garantem a coesão: família, linguagem, divisão do trabalho e religião. A <strong>Ordem</strong> é a base de todo Progresso.</p>
+                    </div>
+                `, 
+                children: []
+            },
+            {
+                id: 'F2-3', 
+                type: 'branch-thin', 
+                key: "Dinâmica (O Progresso)", 
+                content: `
+                    <div class="p-5 bg-red-50 border-l-4 border-red-400 rounded-lg shadow-md mb-4">
+                        <p class="text-lg font-bold text-red-800 mb-2">Mecanismo do Progresso:</p>
+                        <p class="text-gray-700">A Lei dos Três Estados é a lei fundamental do Progresso. A política positiva deve apenas 'iluminar' a marcha necessária da humanidade, não criá-la (determinismo histórico).</p>
+                    </div>
+                `, 
+                // Citação direta de Comte (citada em Aron, p. 9)
+                citation: {
+                    source: "Comte, Système de politique positive, Apêndice III, 1828, p. 95 (citado em Aron, p. 9)",
+                    excerpt: "A sua política não deveria ter por objeto fazer avançar a espécie humana, que se move por impulso próprio, seguindo uma lei tão necessária quanto a da gravidade... ela tem por finalidade facilitar sua marcha, iluminando-a."
+                },
+                children: []
+            },
+            {
+                id: 'G3',
+                type: 'branch-thick',
+                title: "3ª ETAPA: RELIGIÃO DA HUMANIDADE",
+                key: "O Sistema Completo e a Virada Moral (Pós-1845)",
+                content: `
+                    <h4 class="text-2xl font-semibold text-gray-800 mt-6 mb-4 border-b pb-2">A Virada do Cientificismo ao Altruísmo</h4>
+                    <p class="text-gray-700 mb-4">A fase final do pensamento de Comte, marcada pela paixão por Clotilde de Vaux. O sistema deixa de ser puramente científico e torna-se a <strong>Religião da Humanidade</strong>.</p>
+                    
+                    <div class="p-5 bg-indigo-50 border-l-4 border-indigo-500 text-indigo-800 rounded-lg mt-6 mb-4 shadow-sm">
+                        <p class="font-bold">Finalidade Social:</p>
+                        <p class="text-sm italic mt-1">Substituir o papel social e moral da Igreja Católica. O sistema precisa de um <strong>culto moral</strong> para garantir a unidade social e a subordinação do Egoísmo ao Altruísmo. O lema 'Viver para Outrem' é central.</p>
+                    </div>
+                `,
+                children: ['F3-1', 'F3-2']
+            },
+            {
+                id: 'F3-1', 
+                type: 'branch-thin', 
+                key: "O Grande Ser (A Humanidade)", 
+                content: `
+                    <div class="p-5 bg-purple-50 border-l-4 border-purple-400 rounded-lg shadow-md mb-4">
+                        <p class="text-lg font-bold text-purple-800 mb-2">Objeto de Culto:</p>
+                        <p class="text-gray-700">A Humanidade é o objeto de culto e veneração. É a soma dos seres que contribuíram para o Progresso. É um conceito coletivo de imortalidade subjetiva.</p>
+                    </div>
+                `, 
+                children: []
+            },
+            {
+                id: 'F3-2', 
+                type: 'branch-thin', 
+                key: "O Sacerdote da Nova Ordem", 
+                content: `
+                    <div class="p-5 bg-red-50 border-l-4 border-red-400 rounded-lg shadow-md mb-4">
+                        <p class="text-lg font-bold text-red-800 mb-2">Crítica de Aron:</p>
+                        <p class="text-gray-700">Nesta fase, Comte age mais como um Sacerdote da nova Ordem Positivista. Aron critica a fusão da ciência com a doutrina política, levando à 'deformação' final do Positivismo, que se torna totalitário em sua ambição.</p>
+                    </div>
+                `, 
+                children: []
+            },
+            {
+                id: 'S1',
+                type: 'trunk',
+                title: "SÍNTESE FINAL: O LEGADO DE COMTE",
+                key: "Cientista vs. Reformador Social",
+                content: `
+                    <h4 class="text-2xl font-semibold text-gray-800 mt-6 mb-4 border-b pb-2">Conclusão de Aron: A Ambiguidade de Comte</h4>
+                    <p class="text-gray-700 mb-6">Aron reconhece que a maior contribuição de Comte foi fundar a Sociologia, mas sua ambição de totalidade o levou a uma doutrina determinista.</p>
+                    
+                    <ul class="list-disc list-inside space-y-3 ml-4 text-gray-700 p-4 bg-gray-100 rounded-xl border border-gray-200 shadow-inner mb-6">
+                        <li class="font-bold text-green-700">Cientista: <span class="font-normal text-gray-800">Inventou o nome Sociologia e o método positivo para o social.</span></li>
+                        <li class="font-bold text-red-700">Reformador: <span class="font-normal text-gray-800">Criou uma religião/doutrina moral para garantir o consenso.</span></li>
+                    </ul>
+                    
+                    <div class="p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 rounded-lg shadow-sm">
+                        <p class="font-bold">Legado Contraditório:</p>
+                        <p class="text-sm italic mt-1">A Sociologia moderna aceitou o método científico, mas rejeitou seu projeto final de reforma teocrática e moral, que nega a liberdade e a contingência histórica.</p>
+                    </div>
+                `,
+                // Citação sobre as 3 etapas
+                citation: {
+                    source: "ARON, As Etapas do Pensamento Sociológico, p. 11",
+                    excerpt: "Parece-me que podemos apresentar as etapas da evolução filosófica de Auguste Comte como representando as três formas pelas quais a sociologia se apresenta aos sociólogos: a ciência pura, a filosofia moral e política, e, enfim, a religião."
+                },
+                children: []
+            }
+        ];
+
+        // Mapeamento plano para facilitar a busca por ID
+        let nodeMap = {};
+
+        // --- Funções de Áudio (Tone.js) ---
+        async function startAmbientMusic() {
+            await Tone.start(); 
+            const synth = new Tone.Synth({
+                oscillator: { type: "sine" },
+                envelope: { attack: 0.1, decay: 0.2, sustain: 0.5, release: 0.8 }
+            }).toDestination();
+            Tone.Destination.volume.value = -12; 
+            const notes = ["C4", "G3", "A3", "F3"]; 
+            let noteIndex = 0;
+            // Corrigido o loop para usar '1m' para um andamento mais lento e contemplativo (40 BPM)
+            ambientLoop = new Tone.Loop(time => { 
+                const note = notes[noteIndex % notes.length];
+                synth.triggerAttackRelease(note, "2n", time);
+                noteIndex++;
+            }, "1m").start(0);
+            Tone.Transport.bpm.value = 40; 
+            Tone.Transport.start();
+            musicPlaying = true;
+            document.getElementById('music-icon').textContent = '🔊';
+        }
+
+        function stopAmbientMusic() {
+            if (ambientLoop) {
+                ambientLoop.stop();
+                // Pausar o transporte, mas manter o objeto Tone.js
+                Tone.Transport.stop(); 
+            }
+            musicPlaying = false;
+            document.getElementById('music-icon').textContent = '🔇';
+        }
+
+        document.getElementById('music-btn').addEventListener('click', () => {
+            if (musicPlaying) {
+                stopAmbientMusic();
+            } else {
+                startAmbientMusic();
+            }
+        });
+        // --- Fim Setup de Áudio ---
+
+        /**
+         * Cria o mapeamento plano de nós para busca rápida.
+         */
+        function buildNodeMap(nodes) {
+            nodes.forEach(node => {
+                nodeMap[node.id] = node;
+            });
+        }
+        
+        /**
+         * Gera recursivamente o mapa conceitual (Tronco, Galhos, Folhas).
+         */
+        function renderTree(parentId, level = 0) {
+            const parentNode = nodeMap[parentId];
+            if (!parentNode || !parentNode.children) return '';
+
+            // Usa 'ml-4' para recuo visual dos sub-galhos
+            let html = `<ul class="${level > 0 ? 'ml-4 mt-2 space-y-2 border-l border-indigo-300 pl-4' : 'space-y-3'}">`;
+
+            parentNode.children.forEach(childId => {
+                const node = nodeMap[childId];
+
+                let nodeClass = 'bg-gray-200 text-gray-800';
+                let icon = '📖';
+                if (node.type === 'trunk') {
+                    nodeClass = 'trunk text-white font-extrabold';
+                    icon = '🌳';
+                } else if (node.type === 'branch-thick') {
+                    nodeClass = 'branch-thick text-white font-bold';
+                    icon = '🌿';
+                } else if (node.type === 'branch-thin') {
+                    nodeClass = 'branch-thin text-white font-medium';
+                    icon = '🍃';
+                }
+
+                // A classe 'active' NÃO é aplicada aqui, pois será manipulada dinamicamente
+                html += `<li>
+                    <div 
+                        id="node-${node.id}"
+                        class="concept-node p-3 rounded-lg shadow-md ${nodeClass}"
+                        data-id="${node.id}"
+                        onclick='displayContentById("${node.id}")'
+                    >
+                        <span class="mr-2">${icon}</span> ${node.key}
+                    </div>`;
+
+                // Renderiza os filhos (galhos menores) recursivamente
+                if (node.children && node.children.length > 0) {
+                    html += renderTree(node.id, level + 1);
+                }
+
+                html += `</li>`;
+            });
+            
+            html += `</ul>`;
+            return html;
+        }
+
+        /**
+         * Função wrapper para buscar o objeto de dados pelo ID e chamar displayContent.
+         */
+        function displayContentById(id) {
+            const data = nodeMap[id];
+            if (data) {
+                displayContent(data);
+            } else {
+                console.error("Erro: Nó não encontrado para o ID:", id);
+            }
+        }
+
+        /**
+         * Exibe o conteúdo do nó (galho) clicado no painel da direita e gerencia o estado 'active'.
+         */
+        function displayContent(data) {
+            const { id, key, title, content, citation } = data;
+            
+            // 1. Lógica de atualização de estado ativo (Otimizada)
+            const oldActiveNode = document.getElementById(`node-${activeNodeId}`);
+            if (oldActiveNode) {
+                oldActiveNode.classList.remove('active');
+            }
+
+            // 2. Atualizar o ID ativo
+            activeNodeId = id;
+
+            // 3. Aplicar classe 'active' ao novo nó
+            const newActiveNode = document.getElementById(`node-${activeNodeId}`);
+            if (newActiveNode) {
+                newActiveNode.classList.add('active');
+            }
+            
+            // 4. Inserir o novo conteúdo principal
+            document.getElementById('content-title').textContent = title;
+            document.getElementById('content-key').textContent = key;
+            document.getElementById('content-body').innerHTML = content;
+
+            // 5. Inserir a citação rastreável (Novo)
+            const citationBlock = document.getElementById('citation-content');
+            if (citation && citation.source && citation.excerpt) {
+                citationBlock.innerHTML = `
+                    <p class="mb-3 p-3 bg-white rounded shadow-sm text-base text-gray-800 border-l-2 border-green-500">${citation.excerpt}</p>
+                    <p class="text-xs font-semibold text-green-700 mt-2">Fonte: ${citation.source}</p>
+                `;
+            } else {
+                citationBlock.innerHTML = `
+                    <p class="text-sm text-gray-500 p-2">Nenhuma citação rastreável direta disponível para este tópico. Foco no resumo interpretativo de Aron.</p>
+                `;
+            }
+        }
+
+        /**
+         * Renderiza um único nó (usado para o Tronco T1, que não tem pai).
+         */
+        function renderNode(node) {
+            let nodeClass = 'trunk text-white font-extrabold';
+            let icon = '🌳';
+            
+            return `<div 
+                id="node-${node.id}"
+                class="concept-node p-3 rounded-lg shadow-md ${nodeClass}"
+                data-id="${node.id}"
+                onclick='displayContentById("${node.id}")'
+            >
+                <span class="mr-2">${icon}</span> ${node.key}
+            </div>`;
+        }
+
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Constrói o mapa de busca (necessário para a recursão)
+            buildNodeMap(conceptTree);
+            
+            // 2. Define o nó inicial
+            const trunkNode = conceptTree[0];
+            activeNodeId = trunkNode.id;
+
+            // 3. Renderiza a ESTRUTURA da árvore UMA VEZ
+            const treeContainer = document.getElementById('concept-tree');
+            treeContainer.innerHTML = `<h3 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Estrutura (Tronco & Galhos)</h3>`;
+            treeContainer.innerHTML += renderNode(trunkNode);
+            treeContainer.innerHTML += renderTree(trunkNode.id);
+
+            // 4. Usa displayContentById para carregar o conteúdo inicial de T1 e aplicar a classe 'active'
+            displayContentById(trunkNode.id);
+        });
+    </script>
+</body>
+</html>
