@@ -13,21 +13,28 @@
     <body>
 <header>
     <div class="header-banner">
-        <h1>Solidarismo</h1>
+        <div class="banner-inner">
+            <p class="eyebrow">Reflexão coletiva</p>
+            <h1>Reflexão e ideias</h1>
+            <p class="hero-subtitle">Discussões, propostas e caminhos para fortalecer a organização.</p>
+        </div>
     </div>
-    <div class="clear"></div>
-    <nav>
-        <div class="site-title">Solidarismo</div>
-        <ul>
-            <li><a href="https://discord.com/invite/AxuJcpF7nF"> Discord </a></li>
-            <li><a href="https://linktr.ee/solidarismo">Redes Sociais</a></li>
-            <li><a href="https://solidarismo.com.br/index.php">Novo site</a></li>
-            <li><a href="apoio_parceiros">Apoio/Parceiros</a></li>
-        <ul>
+    <nav class="site-nav" aria-label="Principal">
+        <div class="nav-inner">
+            <a class="brand" href="index.html">Solidarismo</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+            <ul class="nav-list" id="site-menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="circulos.html">Círculos</a></li>
+                <li><a href="apoio_parceiros.html">Apoio/Parceiros</a></li>
+                <li><a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Discord</a></li>
+                <li><a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes Sociais</a></li>
+            </ul>
+        </div>
     </nav>
 </header>
    <script type="text/javascript" src="script.js"></script>
-<section class="content">
+<section class="content with-aside">
     <article>
 
 
@@ -98,7 +105,7 @@
 
         
     <aside>
-        <img src="src/img/solidarimoMarca.png" width="146" height="150">
+        <img src="src/img/solidarimoMarca.png" width="146" height="150" alt="Marca Solidarismo">
     
 
         

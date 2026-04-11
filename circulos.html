@@ -3,101 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
   <title>Estrutura de participação do Solidarismo</title>
-  <style>
-    :root {
-      --bg: #f6f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #4b5563;
-      --border: #e5e7eb;
-      --green: #15803d;
-      --blue: #1d4ed8;
-      --orange: #c2410c;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 40px 20px;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-    }
-    h1 {
-      margin-top: 0;
-      margin-bottom: 24px;
-      font-size: 2rem;
-      line-height: 1.2;
-    }
-    h2 {
-      margin-top: 36px;
-      margin-bottom: 12px;
-      font-size: 1.35rem;
-      line-height: 1.3;
-    }
-    h3 {
-      margin-top: 18px;
-      margin-bottom: 8px;
-      font-size: 1rem;
-    }
-    p {
-      margin: 0 0 14px 0;
-      color: var(--text);
-    }
-    .muted { color: var(--muted); }
-    ul {
-      margin: 8px 0 14px 22px;
-      padding: 0;
-    }
-    li { margin-bottom: 8px; }
-    .circle-green { color: var(--green); }
-    .circle-blue { color: var(--blue); }
-    .circle-orange { color: var(--orange); }
-    .section {
-      padding-top: 8px;
-      border-top: 1px solid var(--border);
-      margin-top: 28px;
-    }
-    .section:first-of-type {
-      border-top: none;
-      margin-top: 0;
-      padding-top: 0;
-    }
-  </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <p style="
-      background:#eef2ff;
-      border:1px solid #c7d2fe;
-      padding:12px 16px;
-      border-radius:10px;
-      margin-top:0;
-      margin-bottom:24px;
-      font-size:0.95rem;
-    ">
-      Se você ainda não leu o manifesto,
-      <a href="https://solidarismo.github.io/" target="_blank"
-         style="color:#1d4ed8; font-weight:bold; text-decoration:none;">
-         leia aqui
-      </a>.
-    </p>
+  <header>
+    <div class="header-banner">
+      <div class="banner-inner">
+        <h1>Estrutura de participação</h1>
+        <p class="hero-subtitle">Como a comunidade se organiza para construir o movimento.</p>
+      </div>
+    </div>
+    <nav class="site-nav" aria-label="Principal">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">Solidarismo</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+        <ul class="nav-list" id="site-menu">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="circulos.html" aria-current="page">Círculos</a></li>
+          <li><a href="apoio_parceiros.html">Apoio/Parceiros</a></li>
+          <li><a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Discord</a></li>
+          <li><a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes Sociais</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-      
-      <h1>Estrutura de participação do Solidarismo</h1>
+  <script type="text/javascript" src="script.js"></script>
+
+  <main class="content">
+    <article class="card">
+      <p class="callout">
+        Se você ainda não leu o manifesto,
+        <a href="https://solidarismo.github.io/" target="_blank" rel="noopener noreferrer">leia aqui</a>.
+      </p>
+
+      <h2>Estrutura de participação do Solidarismo</h2>
 
       <p>O Solidarismo é um movimento em construção coletiva — e também uma rede de pessoas que querem construir algo melhor juntas, apoiando umas às outras ao longo desse processo.</p>
 
@@ -107,9 +48,9 @@
 
       <div class="section">
         <h2>Coordenações do coletivo</h2>
-    
+
         <p>Em breve serão definidos os primeiros responsáveis por algumas frentes de atuação — e estamos procurando pessoas que queiram ajudar a construir o Solidarismo junto conosco!</p>
-    
+
         <ul>
           <li>Secretário-Geral do Coletivo</li>
           <li>Diretor de Criação</li>
@@ -122,7 +63,8 @@
           <li>Influencer filosófico</li>
         </ul>
       </div>
-    
+
+      <div class="section">
         <h2 class="circle-green">🟢 Terceiro círculo — Simpatizantes</h2>
 
         <p>O terceiro círculo é formado por pessoas que estão se aproximando do Solidarismo, conheceram suas ideias principais e demonstram interesse genuíno em acompanhar e participar da comunidade.</p>
@@ -178,7 +120,7 @@
 
         <p class="muted">Caso um membro precise se afastar das atividades por um período prolongado, é recomendado que comunique o grupo. Na ausência de participação por tempo significativo sem aviso prévio, poderá ocorrer o retorno ao círculo anterior, como forma de manter a organização e alinhamento com a participação real de seus integrantes.</p>
       </div>
-    </div>
-  </div>
+    </article>
+  </main>
 </body>
 </html>
