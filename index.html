@@ -10,28 +10,30 @@
   <body>
     <header>
       <div class="header-banner">
-        <h1>Solidarismo, introdução</h1>
+        <div class="banner-inner">
+          <h1>Solidarismo, introdução</h1>
+          <p class="hero-subtitle">Conectando pessoas, ideias e iniciativas para construir alternativas reais.</p>
+        </div>
       </div>
 
-      <div class="clear"></div>
-
-      <nav>
-        <div class="site-title">Solidarismo</div>
-        <ul>
-          <li>
-            <a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Discord</a>
-          </li>
-          <li>
-            <a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes Sociais</a>
-          </li>
-          <li><a href="apoio_parceiros.html">Apoio/Parceiros</a></li>
-        </ul>
+      <nav class="site-nav" aria-label="Principal">
+        <div class="nav-inner">
+          <a class="brand" href="index.html">Solidarismo</a>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+          <ul class="nav-list" id="site-menu">
+            <li><a href="index.html" aria-current="page">Início</a></li>
+            <li><a href="circulos.html">Círculos</a></li>
+            <li><a href="apoio_parceiros.html">Apoio/Parceiros</a></li>
+            <li><a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Discord</a></li>
+            <li><a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes Sociais</a></li>
+          </ul>
+        </div>
       </nav>
     </header>
 
     <script type="text/javascript" src="script.js"></script>
 
-    <section class="content">
+    <section class="content with-aside">
       <article>
         <h2 id="participe">Participe! Venha formar conexões reais</h2>
         <p>
