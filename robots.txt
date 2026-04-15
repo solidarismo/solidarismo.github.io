@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /translation/
+Disallow: /scripts/
+Disallow: /test.html
+
+Sitemap: https://solidarismo.github.io/sitemap.xml
