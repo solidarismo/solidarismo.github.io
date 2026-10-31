@@ -1,3 +1,5 @@
+document.documentElement.classList.add("js");
+
 // Legacy entrypoint kept for compatibility with existing HTML files.
 // The real script lives in src/assets/js/main.js.
 (() => {

@@ -26,224 +26,38 @@
     <meta name="twitter:image" content="https://solidarismo.github.io/src/img/solidarimoMarca.png" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Trilha ética do Solidarismo</title>
-    <style>
-      .ethics-article {
-        display: grid;
-        gap: 1.4rem;
-        counter-reset: section;
-      }
-
-      .ethics-article > .eyebrow {
-        color: var(--brand);
-        margin-bottom: -0.4rem;
-      }
-
-      .ethics-lead {
-        margin: 0;
-        font-size: 1.08rem;
-        color: var(--muted);
-      }
-
-      .ethics-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .ethics-meta li {
-        margin: 0;
-        padding: 0.45rem 0.85rem;
-        border-radius: 999px;
-        border: 1px solid rgba(11, 83, 101, 0.18);
-        background: rgba(11, 83, 101, 0.06);
-        color: var(--brand-strong);
-        font-size: 0.92rem;
-        font-weight: 500;
-      }
-
-      .ethics-intro p,
-      .ethics-section p {
-        margin: 0 0 1rem;
-      }
-
-      .ethics-section ul,
-      .ethics-section ol {
-        margin-top: 0;
-      }
-
-      .ethics-section {
-        counter-reset: subsection;
-      }
-
-      .ethics-section > h2 {
-        counter-increment: section;
-      }
-
-      .ethics-section > h2::before {
-        content: counter(section) " ";
-        color: var(--brand);
-        font-weight: 700;
-        margin-right: 0.25rem;
-      }
-
-      .toc-card {
-        padding: 1.2rem 1.3rem;
-        border-radius: 18px;
-        background: rgba(11, 83, 101, 0.08);
-        border: 1px solid rgba(11, 83, 101, 0.18);
-      }
-
-      .toc-card h2 {
-        margin-top: 0;
-        margin-bottom: 0.9rem;
-        font-size: 1.1rem;
-      }
-
-      .toc-card .toc-list,
-      .toc-card .toc-list ol {
-        list-style: none;
-        margin: 0;
-        padding-left: 0;
-      }
-
-      .toc-card .toc-list {
-        counter-reset: toc-item;
-      }
-
-      .toc-card .toc-list ol {
-        counter-reset: toc-item;
-        margin-top: 0.45rem;
-        margin-left: 1.25rem;
-      }
-
-      .toc-card li {
-        display: block;
-        margin-bottom: 0.6rem;
-        counter-increment: toc-item;
-      }
-
-      .toc-card li::before {
-        content: counters(toc-item, ".") " ";
-        color: var(--brand);
-        font-weight: 700;
-        margin-right: 0.3rem;
-      }
-
-      .guide-card {
-        padding: 1rem 1.1rem;
-        border-radius: 18px;
-        border: 1px solid rgba(11, 83, 101, 0.18);
-        background: rgba(11, 83, 101, 0.06);
-      }
-
-      .guide-card p:last-child {
-        margin-bottom: 0;
-      }
-
-      .highlight-list {
-        display: grid;
-        gap: 0.8rem;
-        margin: 1.1rem 0 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .highlight-list li {
-        margin: 0;
-        padding: 0.9rem 1rem;
-        border-radius: 16px;
-        background: rgba(255, 255, 255, 0.72);
-        border: 1px solid rgba(11, 83, 101, 0.12);
-      }
-
-      .quote-block {
-        margin: 1.2rem 0;
-        padding: 1rem 1.1rem;
-        border-left: 4px solid var(--accent);
-        background: rgba(211, 154, 98, 0.08);
-        border-radius: 0 16px 16px 0;
-      }
-
-      .subsection-title {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.55rem;
-        margin-bottom: 0.25rem;
-        counter-increment: subsection;
-      }
-
-      .subsection-title::before {
-        content: counter(section) "." counter(subsection);
-        color: var(--brand);
-        font-weight: 700;
-        font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
-        flex: 0 0 auto;
-      }
-
-      .trap-list {
-        display: grid;
-        gap: 1rem;
-        margin: 1.2rem 0 0;
-      }
-
-      .trap-item {
-        padding: 1rem 1.1rem;
-        border-radius: 18px;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.7);
-      }
-
-      .trap-item h3 {
-        margin-top: 0;
-        margin-bottom: 0.5rem;
-        font-size: 1.05rem;
-      }
-
-      .trap-item p:last-child {
-        margin-bottom: 0;
-      }
-
-      .banner-inner .hero-subtitle {
-        max-width: 58ch;
-      }
-    </style>
+    <script src="script.js"></script>
   </head>
 
   <body>
-    <header>
-      <div class="header-banner">
-        <div class="banner-inner">
-          <p class="eyebrow">Formação Ética</p>
-          <h1>Trilha ética do Solidarismo</h1>
-          <p class="hero-subtitle">
-            Um guia de princípios morais, postura pessoal e hábitos mentais para fortalecer a coerência interna do coletivo.
-          </p>
-        </div>
-      </div>
-
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="reading-progress" aria-hidden="true"></div>
+    <header class="site-header">
       <nav class="site-nav" aria-label="Principal">
         <div class="nav-inner">
-          <a class="brand" href="index.html">Solidarismo</a>
-          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+          <a class="brand" href="index.html"><img src="src/img/solidarimoMarca.png" alt="" width="36" height="36" />Solidarismo</a>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu"><span class="menu-toggle-bars" aria-hidden="true"></span>Menu</button>
           <ul class="nav-list" id="site-menu">
             <li><a href="index.html">Início</a></li>
             <li><a href="circulos.html">Círculos</a></li>
-            <li><a href="apoio_parceiros.html">Apoio/Parceiros</a></li>
             <li><a href="FundamentosDoSolidarismo.html">Fundamentos</a></li>
             <li><a href="TrilhaDoSolidarismo.html" aria-current="page">Trilha ética</a></li>
-            <li><a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Discord</a></li>
-            <li><a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes Sociais</a></li>
+            <li><a href="apoio_parceiros.html">Apoie</a></li>
+            <li><a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes</a></li>
+            <li class="nav-cta"><a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Entrar no Discord</a></li>
           </ul>
         </div>
       </nav>
     </header>
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <p class="eyebrow">Formação Ética</p>
+        <h1>Trilha ética do Solidarismo</h1>
+        <p class="hero-subtitle">Um guia de princípios morais, postura pessoal e hábitos mentais para fortalecer a coerência interna do coletivo.</p>
+      </div>
+    </section>
 
-    <script type="text/javascript" src="script.js"></script>
-
-    <main class="content with-aside">
+    <main id="conteudo" class="content with-aside">
       <article class="ethics-article">
         <p class="eyebrow">Versão 1.2</p>
         <h1 class="titulo flash-animation" id="introducao">Introdução</h1>
@@ -528,5 +342,33 @@
         </div>
       </aside>
     </main>
+      <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="brand" href="index.html"><img src="src/img/solidarimoMarca.png" alt="" width="36" height="36" />Solidarismo</a>
+          <p class="footer-motto">Só sou porque somos.</p>
+          <p>Conectando pessoas, ideias e iniciativas para construir alternativas reais.</p>
+        </div>
+        <div class="footer-col">
+          <h2>Conheça</h2>
+          <ul>
+            <li><a href="index.html">O que é Solidarismo</a></li>
+            <li><a href="FundamentosDoSolidarismo.html">Fundamentos</a></li>
+            <li><a href="TrilhaDoSolidarismo.html">Trilha ética</a></li>
+            <li><a href="circulos.html">Círculos de participação</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Participe</h2>
+          <ul>
+            <li><a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Discord</a></li>
+            <li><a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes sociais</a></li>
+            <li><a href="https://conexao-solidaria.com/" target="_blank" rel="noopener noreferrer">Conexão Solidária</a></li>
+            <li><a href="apoio_parceiros.html">Apoie o coletivo</a></li>
+          </ul>
+        </div>
+        <p class="footer-bottom">Coletivo Solidarismo · conteúdo em construção coletiva.</p>
+      </div>
+    </footer>
   </body>
 </html>

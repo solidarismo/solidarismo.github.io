@@ -25,222 +25,37 @@
     <meta name="twitter:image" content="https://solidarismo.github.io/src/img/solidarimoMarca.png" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Fundamentos do Solidarismo</title>
-    <style>
-      .document-article {
-        display: grid;
-        gap: 1.4rem;
-        counter-reset: section;
-      }
-
-      .document-article > .eyebrow {
-        color: var(--brand);
-        margin-bottom: -0.4rem;
-      }
-
-      .document-intro {
-        margin: 0;
-      }
-
-      .document-intro p {
-        margin: 0 0 1rem;
-      }
-
-      .document-section p {
-        margin: 0 0 1rem;
-      }
-
-      .document-section ul,
-      .document-section ol {
-        margin-top: 0;
-      }
-
-      .document-section {
-        counter-reset: subsection;
-      }
-
-      .document-section > h2 {
-        counter-increment: section;
-      }
-
-      .document-section > h2::before {
-        content: counter(section) " ";
-        color: var(--brand);
-        font-weight: 700;
-        margin-right: 0.25rem;
-      }
-
-      .toc-card {
-        padding: 1.2rem 1.3rem;
-        border-radius: 18px;
-        background: rgba(11, 83, 101, 0.08);
-        border: 1px solid rgba(11, 83, 101, 0.18);
-      }
-
-      .toc-card h2 {
-        margin-top: 0;
-        margin-bottom: 0.9rem;
-        font-size: 1.1rem;
-      }
-
-      .toc-card .toc-list,
-      .toc-card .toc-list ol {
-        list-style: none;
-        margin: 0;
-        padding-left: 0;
-      }
-
-      .toc-card .toc-list {
-        counter-reset: toc-item;
-      }
-
-      .toc-card .toc-list ol {
-        counter-reset: toc-item;
-        margin-top: 0.45rem;
-        margin-left: 1.25rem;
-      }
-
-      .toc-card li {
-        display: block;
-        margin-bottom: 0.6rem;
-        counter-increment: toc-item;
-      }
-
-      .toc-card li::before {
-        content: counters(toc-item, ".") " ";
-        color: var(--brand);
-        font-weight: 700;
-        margin-right: 0.3rem;
-      }
-
-      .draft-note {
-        padding: 1rem 1.1rem;
-        border-radius: 16px;
-        background: rgba(211, 154, 98, 0.12);
-        border: 1px solid rgba(211, 154, 98, 0.28);
-        color: #6b4a1e;
-      }
-
-      .quote-block {
-        margin: 1.3rem 0;
-        padding: 1rem 1.1rem;
-        border-left: 4px solid var(--accent);
-        background: rgba(211, 154, 98, 0.08);
-        border-radius: 0 16px 16px 0;
-        color: var(--ink);
-      }
-
-      .impact-table-wrap {
-        overflow-x: auto;
-        margin: 1.2rem 0 1.5rem;
-      }
-
-      .impact-table {
-        width: 100%;
-        border-collapse: collapse;
-        min-width: 640px;
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        overflow: hidden;
-      }
-
-      .impact-table caption {
-        caption-side: top;
-        text-align: left;
-        font-weight: 600;
-        margin-bottom: 0.8rem;
-      }
-
-      .impact-table th,
-      .impact-table td {
-        padding: 0.9rem 0.95rem;
-        border-bottom: 1px solid var(--line);
-        vertical-align: top;
-      }
-
-      .impact-table th {
-        background: rgba(11, 83, 101, 0.08);
-        text-align: left;
-        font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
-      }
-
-      .impact-table tr:last-child td {
-        border-bottom: none;
-      }
-
-      .subsection-title {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.55rem;
-        margin-bottom: 0.25rem;
-        counter-increment: subsection;
-      }
-
-      .subsection-title::before {
-        content: counter(section) "." counter(subsection);
-        color: var(--brand);
-        font-weight: 700;
-        font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
-        flex: 0 0 auto;
-      }
-
-      .reference-group + .reference-group {
-        margin-top: 1.5rem;
-      }
-
-      .reference-group h3 {
-        margin-bottom: 0.6rem;
-      }
-
-      .reference-list {
-        margin: 0;
-        padding-left: 1.1rem;
-      }
-
-      .reference-list li {
-        overflow-wrap: anywhere;
-      }
-
-      .banner-inner .hero-subtitle {
-        max-width: 56ch;
-      }
-
-      @media only screen and (max-width: 960px) {
-        .impact-table {
-          min-width: 100%;
-        }
-      }
-    </style>
+    <script src="script.js"></script>
   </head>
 
   <body>
-    <header>
-      <div class="header-banner">
-        <div class="banner-inner">
-          <p class="eyebrow">Documento Base</p>
-          <h1>Fundamentos do Solidarismo</h1>
-        </div>
-      </div>
-
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="reading-progress" aria-hidden="true"></div>
+    <header class="site-header">
       <nav class="site-nav" aria-label="Principal">
         <div class="nav-inner">
-          <a class="brand" href="index.html">Solidarismo</a>
-          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+          <a class="brand" href="index.html"><img src="src/img/solidarimoMarca.png" alt="" width="36" height="36" />Solidarismo</a>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu"><span class="menu-toggle-bars" aria-hidden="true"></span>Menu</button>
           <ul class="nav-list" id="site-menu">
             <li><a href="index.html">Início</a></li>
             <li><a href="circulos.html">Círculos</a></li>
-            <li><a href="apoio_parceiros.html">Apoio/Parceiros</a></li>
             <li><a href="FundamentosDoSolidarismo.html" aria-current="page">Fundamentos</a></li>
             <li><a href="TrilhaDoSolidarismo.html">Trilha ética</a></li>
-            <li><a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Discord</a></li>
-            <li><a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes Sociais</a></li>
+            <li><a href="apoio_parceiros.html">Apoie</a></li>
+            <li><a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes</a></li>
+            <li class="nav-cta"><a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Entrar no Discord</a></li>
           </ul>
         </div>
       </nav>
     </header>
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <p class="eyebrow">Documento Base</p>
+        <h1>Fundamentos do Solidarismo</h1>
+      </div>
+    </section>
 
-    <script type="text/javascript" src="script.js"></script>
-
-    <main class="content with-aside">
+    <main id="conteudo" class="content with-aside">
       <article class="document-article">
         <p class="eyebrow">Versão 1.8</p>
         <h1 class="titulo flash-animation" id="introducao">Introdução</h1>
@@ -530,13 +345,6 @@
           </p>
         </section>
 
-        <section class="section document-section" id="obsolescencia">
-          <h2>Obsolescência programada</h2>
-          <div class="draft-note">
-            Seção em desenvolvimento.
-          </div>
-        </section>
-
         <section class="section document-section" id="imperialismo">
           <h2>Imperialismo e exploração</h2>
           <p>
@@ -571,19 +379,6 @@
           </p>
         </section>
 
-        <section class="section document-section" id="felicidade">
-          <h2>Ciência da felicidade</h2>
-          <div class="draft-note">
-            Seção em desenvolvimento.
-          </div>
-        </section>
-
-        <section class="section document-section" id="convivencia">
-          <h2>Convivência em sociedade</h2>
-          <div class="draft-note">
-            Seção em desenvolvimento.
-          </div>
-        </section>
 
         <section class="section document-section" id="luta">
           <h2>A luta que cura e gera prosperidade</h2>
@@ -904,10 +699,7 @@
               </ol>
             </li>
             <li><a href="#desemprego">Desemprego e desigualdade social</a></li>
-            <li><a href="#obsolescencia">Obsolescência programada</a></li>
             <li><a href="#imperialismo">Imperialismo e exploração</a></li>
-            <li><a href="#felicidade">Ciência da felicidade</a></li>
-            <li><a href="#convivencia">Convivência em sociedade</a></li>
             <li>
               <a href="#luta">A luta que cura e gera prosperidade</a>
               <ol>
@@ -947,5 +739,33 @@
         </div>
       </aside>
     </main>
+      <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="brand" href="index.html"><img src="src/img/solidarimoMarca.png" alt="" width="36" height="36" />Solidarismo</a>
+          <p class="footer-motto">Só sou porque somos.</p>
+          <p>Conectando pessoas, ideias e iniciativas para construir alternativas reais.</p>
+        </div>
+        <div class="footer-col">
+          <h2>Conheça</h2>
+          <ul>
+            <li><a href="index.html">O que é Solidarismo</a></li>
+            <li><a href="FundamentosDoSolidarismo.html">Fundamentos</a></li>
+            <li><a href="TrilhaDoSolidarismo.html">Trilha ética</a></li>
+            <li><a href="circulos.html">Círculos de participação</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Participe</h2>
+          <ul>
+            <li><a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Discord</a></li>
+            <li><a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes sociais</a></li>
+            <li><a href="https://conexao-solidaria.com/" target="_blank" rel="noopener noreferrer">Conexão Solidária</a></li>
+            <li><a href="apoio_parceiros.html">Apoie o coletivo</a></li>
+          </ul>
+        </div>
+        <p class="footer-bottom">Coletivo Solidarismo · conteúdo em construção coletiva.</p>
+      </div>
+    </footer>
   </body>
 </html>

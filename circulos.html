@@ -20,55 +20,114 @@
   <meta name="twitter:card" content="summary" />
   <link rel="stylesheet" type="text/css" href="style.css" />
   <title>Estrutura de participação do Solidarismo</title>
-</head>
+    <script src="script.js"></script>
+  </head>
 <body>
-  <header>
-    <div class="header-banner">
-      <div class="banner-inner">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="reading-progress" aria-hidden="true"></div>
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Principal">
+        <div class="nav-inner">
+          <a class="brand" href="index.html"><img src="src/img/solidarimoMarca.png" alt="" width="36" height="36" />Solidarismo</a>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu"><span class="menu-toggle-bars" aria-hidden="true"></span>Menu</button>
+          <ul class="nav-list" id="site-menu">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="circulos.html" aria-current="page">Círculos</a></li>
+            <li><a href="FundamentosDoSolidarismo.html">Fundamentos</a></li>
+            <li><a href="TrilhaDoSolidarismo.html">Trilha ética</a></li>
+            <li><a href="apoio_parceiros.html">Apoie</a></li>
+            <li><a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes</a></li>
+            <li class="nav-cta"><a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Entrar no Discord</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <section class="page-hero">
+      <div class="page-hero-inner">
         <h1>Estrutura de participação</h1>
         <p class="hero-subtitle">Como a comunidade se organiza para construir o movimento.</p>
       </div>
-    </div>
-    <nav class="site-nav" aria-label="Principal">
-      <div class="nav-inner">
-        <a class="brand" href="index.html">Solidarismo</a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
-        <ul class="nav-list" id="site-menu">
-          <li><a href="index.html">Início</a></li>
-          <li><a href="circulos.html" aria-current="page">Círculos</a></li>
-          <li><a href="apoio_parceiros.html">Apoio/Parceiros</a></li>
-          <li><a href="FundamentosDoSolidarismo.html">Fundamentos</a></li>
-          <li><a href="TrilhaDoSolidarismo.html">Trilha ética</a></li>
-          <li><a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Discord</a></li>
-          <li><a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes Sociais</a></li>
-        </ul>
+    </section>
+  <main id="conteudo" class="content">
+    <article>
+      <p class="callout">Se você ainda não leu o manifesto, <a href="index.html#manifesto">comece por aqui</a>.</p>
+
+      <div class="split">
+        <div>
+          <h2>Três círculos, um movimento</h2>
+          <p>O Solidarismo é um movimento em construção coletiva — e também uma rede de pessoas que querem construir algo melhor juntas, apoiando umas às outras ao longo desse processo.</p>
+          <p>Para organizar essa construção de forma saudável e transparente, a comunidade está estruturada em três círculos de participação. Cada círculo representa um nível diferente de envolvimento com as ideias, com os projetos e com a organização do movimento. Conforme a participação cresce, crescem também a confiança, a responsabilidade e o acesso a iniciativas, decisões e espaços de construção interna.</p>
+          <p>O crescimento dentro dos círculos acontece naturalmente, através do estudo, da participação e da colaboração com o movimento.</p>
+        </div>
+        <div class="orbit" role="img" aria-label="Três círculos concêntricos: simpatizantes por fora, membros no meio e núcleo ativo no centro">
+          <div class="orbit-ring c-green">Simpatizantes</div>
+          <div class="orbit-ring c-blue">Membros</div>
+          <div class="orbit-ring c-orange">Núcleo<br />ativo</div>
+        </div>
       </div>
-    </nav>
-  </header>
 
-  <script type="text/javascript" src="script.js"></script>
+      <section class="section">
+        <div class="circle-detail c-green">
+          <span class="circle-badge" aria-hidden="true">3</span>
+          <div>
+            <span class="eyebrow circle-green">Terceiro círculo</span>
+            <h2>Simpatizantes</h2>
+            <p>O terceiro círculo é formado por pessoas que estão se aproximando do Solidarismo, conheceram suas ideias principais e demonstram interesse genuíno em acompanhar e participar da comunidade.</p>
+            <p>Este é o principal espaço de entrada para quem quer conhecer melhor o movimento e começar a se envolver com suas ideias e iniciativas.</p>
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Ter lido o <a href="index.html#manifesto">Manifesto do Solidarismo</a></li>
+              <li>Demonstrar postura respeitosa e construtiva dentro da comunidade</li>
+              <li>Receber indicação de um membro do primeiro círculo, como forma simples de validação comunitária</li>
+            </ul>
+            <p>A partir deste círculo, já é possível acompanhar de forma mais próxima o desenvolvimento do movimento e participar das discussões da comunidade.</p>
+          </div>
+        </div>
 
-  <main class="content">
-    <article class="card">
-      <p class="callout">
-        Se você ainda não leu o manifesto,
-        <a href="https://solidarismo.github.io/" target="_blank" rel="noopener noreferrer">leia aqui</a>.
-      </p>
+        <div class="circle-detail c-blue">
+          <span class="circle-badge" aria-hidden="true">2</span>
+          <div>
+            <span class="eyebrow circle-blue">Segundo círculo</span>
+            <h2>Membros</h2>
+            <p>O segundo círculo é formado por participantes que já aprofundaram seu contato com as ideias do Solidarismo e passam a contribuir de forma mais ativa com a construção do movimento.</p>
+            <p>Neste círculo, os membros deixam de apenas acompanhar as discussões e passam a participar mais diretamente do desenvolvimento das reflexões, propostas e iniciativas da comunidade.</p>
+            <p>É um espaço para quem deseja participar de forma mais próxima da construção das ideias e da organização do Solidarismo.</p>
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Estar no terceiro círculo (Simpatizantes)</li>
+              <li>Ter lido o documento <a href="FundamentosDoSolidarismo.html"><strong>Fundamentos do Solidarismo</strong></a></li>
+              <li>Responder o formulário do coletivo</li>
+              <li>Estar participando da comunidade há pelo menos <strong>30 dias</strong></li>
+            </ul>
+            <p>A partir deste círculo, os membros passam a participar de forma mais direta dos espaços de construção interna do movimento.</p>
+          </div>
+        </div>
 
-      <h2>Estrutura de participação do Solidarismo</h2>
+        <div class="circle-detail c-orange">
+          <span class="circle-badge" aria-hidden="true">1</span>
+          <div>
+            <span class="eyebrow circle-orange">Primeiro círculo</span>
+            <h2>Núcleo ativo</h2>
+            <p>O primeiro círculo é formado por membros que participam ativamente da construção e organização do Solidarismo.</p>
+            <p>São pessoas envolvidas diretamente em projetos, iniciativas e decisões do movimento, ajudando a sustentar e desenvolver sua estrutura e suas ações.</p>
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Estar no segundo círculo (Membros)</li>
+              <li>Participar ativamente de pelo menos uma iniciativa, projeto ou frente de trabalho do movimento</li>
+              <li>Demonstrar participação contínua e compromisso com a construção do Solidarismo</li>
+              <li>Receber indicação de membros do primeiro círculo</li>
+            </ul>
+            <p>Os membros deste círculo participam de forma mais direta dos espaços de organização, planejamento e desenvolvimento estratégico do movimento.</p>
+            <p class="muted">Caso um membro precise se afastar das atividades por um período prolongado, é recomendado que comunique o grupo. Na ausência de participação por tempo significativo sem aviso prévio, poderá ocorrer o retorno ao círculo anterior, como forma de manter a organização e alinhamento com a participação real de seus integrantes.</p>
+          </div>
+        </div>
+      </section>
 
-      <p>O Solidarismo é um movimento em construção coletiva — e também uma rede de pessoas que querem construir algo melhor juntas, apoiando umas às outras ao longo desse processo.</p>
-
-      <p>Para organizar essa construção de forma saudável e transparente, a comunidade está estruturada em três círculos de participação. Cada círculo representa um nível diferente de envolvimento com as ideias, com os projetos e com a organização do movimento. Conforme a participação cresce, crescem também a confiança, a responsabilidade e o acesso a iniciativas, decisões e espaços de construção interna.</p>
-
-      <p>O crescimento dentro dos círculos acontece naturalmente, através do estudo, da participação e da colaboração com o movimento.</p>
-
-      <div class="section">
+      <section class="section">
+        <span class="eyebrow">Vagas abertas</span>
         <h2>Coordenações do coletivo</h2>
-
         <p>Em breve serão definidos os primeiros responsáveis por algumas frentes de atuação — e estamos procurando pessoas que queiram ajudar a construir o Solidarismo junto conosco!</p>
-
-        <ul>
+        <ul class="roles">
           <li>Secretário-Geral do Coletivo</li>
           <li>Diretor de Criação</li>
           <li>Diretor de Comunicação e Redes</li>
@@ -79,65 +138,37 @@
           <li>Influencer político</li>
           <li>Influencer filosófico</li>
         </ul>
-      </div>
-
-      <div class="section">
-        <h2 class="circle-green">🟢 Terceiro círculo — Simpatizantes</h2>
-
-        <p>O terceiro círculo é formado por pessoas que estão se aproximando do Solidarismo, conheceram suas ideias principais e demonstram interesse genuíno em acompanhar e participar da comunidade.</p>
-
-        <p>Este é o principal espaço de entrada para quem quer conhecer melhor o movimento e começar a se envolver com suas ideias e iniciativas.</p>
-
-        <h3>Requisitos</h3>
-        <ul>
-          <li>Ter lido o Manifesto do Solidarismo</li>
-          <li>Demonstrar postura respeitosa e construtiva dentro da comunidade</li>
-          <li>Receber indicação de um membro do primeiro círculo, como forma simples de validação comunitária</li>
-        </ul>
-
-        <p>A partir deste círculo, já é possível acompanhar de forma mais próxima o desenvolvimento do movimento e participar das discussões da comunidade.</p>
-      </div>
-
-      <div class="section">
-        <h2 class="circle-blue">🔵 Segundo círculo — Membros</h2>
-
-        <p>O segundo círculo é formado por participantes que já aprofundaram seu contato com as ideias do Solidarismo e passam a contribuir de forma mais ativa com a construção do movimento.</p>
-
-        <p>Neste círculo, os membros deixam de apenas acompanhar as discussões e passam a participar mais diretamente do desenvolvimento das reflexões, propostas e iniciativas da comunidade.</p>
-
-        <p>É um espaço para quem deseja participar de forma mais próxima da construção das ideias e da organização do Solidarismo.</p>
-
-        <h3>Requisitos</h3>
-        <ul>
-          <li>Estar no terceiro círculo (Simpatizantes)</li>
-          <li>Ter lido o documento <strong>Fundamentos do Solidarismo</strong></li>
-          <li>Responder o formulário do coletivo</li>
-          <li>Estar participando da comunidade há pelo menos <strong>30 dias</strong></li>
-        </ul>
-
-        <p>A partir deste círculo, os membros passam a participar de forma mais direta dos espaços de construção interna do movimento.</p>
-      </div>
-
-      <div class="section">
-        <h2 class="circle-orange">🟠 Primeiro círculo — Núcleo ativo</h2>
-
-        <p>O primeiro círculo é formado por membros que participam ativamente da construção e organização do Solidarismo.</p>
-
-        <p>São pessoas envolvidas diretamente em projetos, iniciativas e decisões do movimento, ajudando a sustentar e desenvolver sua estrutura e suas ações.</p>
-
-        <h3>Requisitos</h3>
-        <ul>
-          <li>Estar no segundo círculo (Membros)</li>
-          <li>Participar ativamente de pelo menos uma iniciativa, projeto ou frente de trabalho do movimento</li>
-          <li>Demonstrar participação contínua e compromisso com a construção do Solidarismo</li>
-          <li>Receber indicação de membros do primeiro círculo</li>
-        </ul>
-
-        <p>Os membros deste círculo participam de forma mais direta dos espaços de organização, planejamento e desenvolvimento estratégico do movimento.</p>
-
-        <p class="muted">Caso um membro precise se afastar das atividades por um período prolongado, é recomendado que comunique o grupo. Na ausência de participação por tempo significativo sem aviso prévio, poderá ocorrer o retorno ao círculo anterior, como forma de manter a organização e alinhamento com a participação real de seus integrantes.</p>
-      </div>
+        <p><a class="button button-primary" href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Quero ajudar no Discord</a></p>
+      </section>
     </article>
   </main>
-</body>
+<footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="brand" href="index.html"><img src="src/img/solidarimoMarca.png" alt="" width="36" height="36" />Solidarismo</a>
+          <p class="footer-motto">Só sou porque somos.</p>
+          <p>Conectando pessoas, ideias e iniciativas para construir alternativas reais.</p>
+        </div>
+        <div class="footer-col">
+          <h2>Conheça</h2>
+          <ul>
+            <li><a href="index.html">O que é Solidarismo</a></li>
+            <li><a href="FundamentosDoSolidarismo.html">Fundamentos</a></li>
+            <li><a href="TrilhaDoSolidarismo.html">Trilha ética</a></li>
+            <li><a href="circulos.html">Círculos de participação</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Participe</h2>
+          <ul>
+            <li><a href="https://discord.com/invite/AxuJcpF7nF" target="_blank" rel="noopener noreferrer">Discord</a></li>
+            <li><a href="https://linktr.ee/solidarismo" target="_blank" rel="noopener noreferrer">Redes sociais</a></li>
+            <li><a href="https://conexao-solidaria.com/" target="_blank" rel="noopener noreferrer">Conexão Solidária</a></li>
+            <li><a href="apoio_parceiros.html">Apoie o coletivo</a></li>
+          </ul>
+        </div>
+        <p class="footer-bottom">Coletivo Solidarismo · conteúdo em construção coletiva.</p>
+      </div>
+    </footer>
+  </body>
 </html>
